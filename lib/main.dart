@@ -29,6 +29,9 @@ class FlutterPracticeApp extends StatelessWidget {
         ),
         scaffoldBackgroundColor: Colors.white,
         primaryColor: const Color(0xFFCFB997),
+        textSelectionTheme: const TextSelectionThemeData(
+          cursorColor: Color(0xFFCFB997),
+        ),
       ),
       home: const MainNavigationScreen(),
     );
