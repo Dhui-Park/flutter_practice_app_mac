@@ -22,8 +22,7 @@ class DiscoverScreen extends StatefulWidget {
 }
 
 class _DiscoverScreenState extends State<DiscoverScreen> {
-  final TextEditingController _textEditingController =
-      TextEditingController(text: "Initial Text");
+  final TextEditingController _textEditingController = TextEditingController();
 
   void _onSearchChanged(String value) {
     print("Searching for $value");
@@ -31,6 +30,10 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
 
   void _onSearchSubmitted(String value) {
     print(value);
+  }
+
+  void _onTabBarTap(int index) {
+    FocusScope.of(context).unfocus();
   }
 
   @override
@@ -53,6 +56,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
             onSubmitted: _onSearchSubmitted,
           ),
           bottom: TabBar(
+            onTap: _onTabBarTap,
             splashFactory: NoSplash.splashFactory,
             padding: const EdgeInsets.symmetric(
               horizontal: Sizes.size16,
