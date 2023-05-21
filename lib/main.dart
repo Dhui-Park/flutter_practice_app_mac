@@ -27,6 +27,7 @@ class FlutterPracticeApp extends StatelessWidget {
             fontWeight: FontWeight.w600,
           ),
         ),
+        splashColor: Colors.transparent,
         scaffoldBackgroundColor: Colors.white,
         primaryColor: const Color(0xFFCFB997),
         textSelectionTheme: const TextSelectionThemeData(
