@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/features/inbox/activity_screen.dart';
 
 import 'constants/sizes.dart';
-import 'features/main_navigation/main_navigation_screen.dart';
 
 void main() {
   runApp(const FlutterPracticeApp());
@@ -34,7 +34,7 @@ class FlutterPracticeApp extends StatelessWidget {
           cursorColor: Color(0xFFCFB997),
         ),
       ),
-      home: const MainNavigationScreen(),
+      home: const ActivityScreen(),
     );
   }
 }
