@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/constants/sizes.dart';
+import 'package:flutter_practice/features/inbox/chat_detail_screen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ChatsScreen extends StatefulWidget {
@@ -13,15 +14,72 @@ class _ChatsScreenState extends State<ChatsScreen> {
   final GlobalKey<AnimatedListState> _key = GlobalKey<AnimatedListState>();
 
   final List<int> _items = [];
+  final Duration _duration = const Duration(milliseconds: 300);
 
   void _addItem() {
     if (_key.currentState != null) {
       _key.currentState!.insertItem(
         _items.length,
-        duration: const Duration(milliseconds: 300),
+        duration: _duration,
       );
       _items.add(_items.length);
     }
+  }
+
+  void _deleteItem(int index) {
+    if (_key.currentState != null) {
+      _key.currentState!.removeItem(
+        index,
+        (context, animation) => SizeTransition(
+          sizeFactor: animation,
+          child: Container(
+            color: Colors.red,
+            child: _makeTile(index),
+          ),
+        ),
+        duration: _duration,
+      );
+      _items.removeAt(index);
+    }
+  }
+
+  void _onChatTap() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const ChatDetailScreen(),
+      ),
+    );
+  }
+
+  Widget _makeTile(int index) {
+    return ListTile(
+      onLongPress: () => _deleteItem(index),
+      onTap: _onChatTap,
+      leading: const CircleAvatar(
+        radius: 30,
+        child: Text('린'),
+      ),
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Text(
+            'Lynn ($index)',
+            style: const TextStyle(
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          Text(
+            '2:16 PM',
+            style: TextStyle(
+              color: Colors.grey.shade500,
+              fontSize: Sizes.size12,
+            ),
+          ),
+        ],
+      ),
+      subtitle: const Text("Don't forget to make video"),
+    );
   }
 
   @override
@@ -50,32 +108,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
             opacity: animation,
             child: SizeTransition(
               sizeFactor: animation,
-              child: ListTile(
-                leading: const CircleAvatar(
-                  radius: 30,
-                  child: Text('린'),
-                ),
-                title: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Text(
-                      'Lynn ($index)',
-                      style: const TextStyle(
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    Text(
-                      '2:16 PM',
-                      style: TextStyle(
-                        color: Colors.grey.shade500,
-                        fontSize: Sizes.size12,
-                      ),
-                    ),
-                  ],
-                ),
-                subtitle: const Text("Don't forget to make video"),
-              ),
+              child: _makeTile(index),
             ),
           );
         },
