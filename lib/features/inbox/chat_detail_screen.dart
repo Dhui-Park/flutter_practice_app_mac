@@ -11,6 +11,14 @@ class ChatDetailScreen extends StatefulWidget {
 }
 
 class _ChatDetailScreenState extends State<ChatDetailScreen> {
+  final TextEditingController _textEditingController = TextEditingController();
+
+  @override
+  void dispose() {
+    _textEditingController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -126,11 +134,45 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
               color: Colors.grey.shade50,
               child: Row(
                 children: [
-                  const Expanded(
-                    child: TextField(),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: Sizes.size12,
+                        vertical: Sizes.size8,
+                      ),
+                      child: TextField(
+                        controller: _textEditingController,
+                        decoration: InputDecoration(
+                          hintText: 'Send a message...',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(
+                              Sizes.size12,
+                            ),
+                            borderSide: BorderSide.none,
+                          ),
+                          contentPadding: const EdgeInsets.symmetric(
+                            vertical: Sizes.size20,
+                            horizontal: Sizes.size20,
+                          ),
+                          filled: true,
+                          fillColor: Colors.grey.shade100,
+                          suffixIcon: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: const [
+                              FaIcon(
+                                FontAwesomeIcons.faceSmile,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
-                  Gaps.h20,
+                  Gaps.h12,
                   Container(
+                    padding: const EdgeInsets.only(
+                      right: Sizes.size20,
+                    ),
                     child: const FaIcon(
                       FontAwesomeIcons.paperPlane,
                     ),
