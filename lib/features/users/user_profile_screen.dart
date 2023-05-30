@@ -96,29 +96,65 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                       ),
                     ),
                     Gaps.v14,
-                    FractionallySizedBox(
-                      widthFactor: 0.33,
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(
-                          vertical: Sizes.size16,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Theme.of(context).primaryColor,
-                          borderRadius: const BorderRadius.all(
-                            Radius.circular(
-                              Sizes.size4,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: Sizes.size16,
+                            horizontal: Sizes.size56,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).primaryColor,
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(
+                                Sizes.size4,
+                              ),
                             ),
                           ),
-                        ),
-                        child: const Text(
-                          'Follow',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w600,
+                          child: const Text(
+                            'Follow',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                            ),
+                            textAlign: TextAlign.center,
                           ),
-                          textAlign: TextAlign.center,
                         ),
-                      ),
+                        Gaps.h3,
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: Sizes.size12,
+                            horizontal: Sizes.size14,
+                          ),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              width: 1,
+                              color: Colors.grey.shade400,
+                            ),
+                            borderRadius: BorderRadius.circular(Sizes.size4),
+                          ),
+                          child: const FaIcon(FontAwesomeIcons.youtube),
+                        ),
+                        Gaps.h3,
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: Sizes.size14,
+                            horizontal: Sizes.size16,
+                          ),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              width: 1,
+                              color: Colors.grey.shade400,
+                            ),
+                            borderRadius: BorderRadius.circular(Sizes.size4),
+                          ),
+                          child: const FaIcon(
+                            FontAwesomeIcons.chevronDown,
+                            size: Sizes.size20,
+                          ),
+                        ),
+                      ],
                     ),
                     Gaps.v14,
                     const Padding(
@@ -170,18 +206,44 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                   mainAxisSpacing: Sizes.size2,
                   childAspectRatio: 9 / 16.8,
                 ),
-                itemBuilder: (context, index) => Column(
+                itemBuilder: (context, index) => Stack(
                   children: [
-                    AspectRatio(
-                      aspectRatio: 9 / 16,
-                      child: FadeInImage.assetNetwork(
-                        fit: BoxFit.cover,
-                        placeholder: "assets/images/placeholder.jpeg",
-                        image:
-                            "https://images.chosun.com/resizer/Oudh-eihlSpSDf_eMvSzzMpNRhg=/464x0/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosun/VINMKQBFWUJEPQSZFB76BX3P4Q.jpg",
+                    Column(
+                      children: [
+                        AspectRatio(
+                          aspectRatio: 9 / 16,
+                          child: FadeInImage.assetNetwork(
+                            fit: BoxFit.cover,
+                            placeholder: "assets/images/placeholder.jpeg",
+                            image:
+                                "https://images.chosun.com/resizer/Oudh-eihlSpSDf_eMvSzzMpNRhg=/464x0/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosun/VINMKQBFWUJEPQSZFB76BX3P4Q.jpg",
+                          ),
+                        ),
+                        Gaps.v10,
+                      ],
+                    ),
+                    Positioned(
+                      left: Sizes.size10,
+                      bottom: Sizes.size20,
+                      child: Row(
+                        children: [
+                          const FaIcon(
+                            FontAwesomeIcons.play,
+                            color: Colors.white,
+                            size: Sizes.size20,
+                          ),
+                          Gaps.h10,
+                          Text(
+                            index % 2 == 0 ? '4.1M' : '29.6K',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: Sizes.size14,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                    Gaps.v10,
                   ],
                 ),
               ),
