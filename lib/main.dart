@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/features/authentication/login_screen.dart';
 import 'package:flutter_practice/features/authentication/sign_up_screen.dart';
+import 'package:flutter_practice/features/authentication/username_screen.dart';
 
 import 'constants/sizes.dart';
 
@@ -34,7 +36,12 @@ class FlutterPracticeApp extends StatelessWidget {
           cursorColor: Color(0xFFCFB997),
         ),
       ),
-      home: const SignUpScreen(),
+      initialRoute: SignUpScreen.routeName,
+      routes: {
+        SignUpScreen.routeName: (context) => const SignUpScreen(),
+        UsernameScreen.routeName: (context) => const UsernameScreen(),
+        LoginScreen.routeName: (context) => const LoginScreen(),
+      },
     );
   }
 }

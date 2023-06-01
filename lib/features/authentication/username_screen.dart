@@ -6,6 +6,8 @@ import 'package:flutter_practice/features/authentication/email_screen.dart';
 import 'widgets/form_button.dart';
 
 class UsernameScreen extends StatefulWidget {
+  static String routeName = "/username";
+
   const UsernameScreen({super.key});
 
   @override
