@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_practice/features/authentication/email_screen.dart';
-import 'package:flutter_practice/features/authentication/login_screen.dart';
-import 'package:flutter_practice/features/authentication/sign_up_screen.dart';
-import 'package:flutter_practice/features/authentication/username_screen.dart';
+import 'package:flutter_practice/router.dart';
 
 import 'constants/sizes.dart';
 
@@ -15,7 +12,8 @@ class FlutterPracticeApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: router,
       debugShowCheckedModeBanner: false,
       title: 'Flutter Practice',
       theme: ThemeData(
@@ -37,13 +35,6 @@ class FlutterPracticeApp extends StatelessWidget {
           cursorColor: Color(0xFFCFB997),
         ),
       ),
-      initialRoute: SignUpScreen.routeName,
-      routes: {
-        SignUpScreen.routeName: (context) => const SignUpScreen(),
-        UsernameScreen.routeName: (context) => const UsernameScreen(),
-        LoginScreen.routeName: (context) => const LoginScreen(),
-        EmailScreen.routeName: (context) => const EmailScreen(),
-      },
     );
   }
 }

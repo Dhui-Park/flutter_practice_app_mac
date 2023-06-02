@@ -3,6 +3,7 @@ import 'package:flutter_practice/features/authentication/login_screen.dart';
 import 'package:flutter_practice/features/authentication/username_screen.dart';
 import 'package:flutter_practice/features/authentication/widgets/auth_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../constants/gaps.dart';
 import '../../constants/sizes.dart';
@@ -12,8 +13,7 @@ class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
 
   void _onLoginTap(BuildContext context) async {
-    final result = await Navigator.of(context).pushNamed(LoginScreen.routeName);
-    print(result);
+    context.push(LoginScreen.routeName);
   }
 
   void _onEmailTap(BuildContext context) {
@@ -42,7 +42,7 @@ class SignUpScreen extends StatelessWidget {
         },
       ),
     ); */
-    Navigator.of(context).pushNamed(UsernameScreen.routeName);
+    context.push(UsernameScreen.routeName);
   }
 
   @override
