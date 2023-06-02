@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_practice/constants/gaps.dart';
 import 'package:flutter_practice/constants/sizes.dart';
 import 'package:flutter_practice/features/authentication/email_screen.dart';
+import 'package:go_router/go_router.dart';
 
 import 'widgets/form_button.dart';
 
@@ -37,9 +38,9 @@ class _UsernameScreenState extends State<UsernameScreen> {
 
   void _onNextTap() {
     if (_username.length < 5) return;
-    Navigator.of(context).pushNamed(
+    context.push(
       EmailScreen.routeName,
-      arguments: EmailScreenArgs(username: _username),
+      extra: EmailScreenArgs(username: _username),
     );
   }
 
