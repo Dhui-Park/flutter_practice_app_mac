@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/constants/gaps.dart';
 import '../../constants/sizes.dart';
-import '../main_navigation/main_navigation_screen.dart';
+import '../common/widgets/main_navigation/main_navigation_screen.dart';
 
 enum Direction { right, left }
 
