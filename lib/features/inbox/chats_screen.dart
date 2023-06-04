@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_practice/constants/sizes.dart';
 import 'package:flutter_practice/features/inbox/chat_detail_screen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 
 class ChatsScreen extends StatefulWidget {
+  static const String routeName = "chats";
+  static const String routeURL = "/chats";
   const ChatsScreen({super.key});
 
   @override
@@ -43,18 +46,17 @@ class _ChatsScreenState extends State<ChatsScreen> {
     }
   }
 
-  void _onChatTap() {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => const ChatDetailScreen(),
-      ),
+  void _onChatTap(int index) {
+    context.pushNamed(
+      ChatDetailScreen.routeName,
+      params: {"chatId": "$index"},
     );
   }
 
   Widget _makeTile(int index) {
     return ListTile(
       onLongPress: () => _deleteItem(index),
-      onTap: _onChatTap,
+      onTap: () => _onChatTap(index),
       leading: const CircleAvatar(
         radius: 30,
         child: Text('린'),

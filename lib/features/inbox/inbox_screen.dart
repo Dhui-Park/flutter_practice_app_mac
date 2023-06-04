@@ -3,24 +3,17 @@ import 'package:flutter_practice/constants/sizes.dart';
 import 'package:flutter_practice/features/inbox/activity_screen.dart';
 import 'package:flutter_practice/features/inbox/chats_screen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 
 class InboxScreen extends StatelessWidget {
   const InboxScreen({super.key});
 
   void _onDmPressed(BuildContext context) {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => const ChatsScreen(),
-      ),
-    );
+    context.pushNamed(ChatsScreen.routeName);
   }
 
   void _onActivityTap(BuildContext context) {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => const ActivityScreen(),
-      ),
-    );
+    context.pushNamed(ActivityScreen.routeName);
   }
 
   @override

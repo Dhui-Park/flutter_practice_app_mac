@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_practice/constants/gaps.dart';
 import 'package:flutter_practice/constants/sizes.dart';
 import 'package:flutter_practice/features/authentication/widgets/form_button.dart';
+import 'package:go_router/go_router.dart';
 
 import '../onboarding/interests_screen.dart';
 
@@ -21,12 +22,7 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
     if (_formKey.currentState != null) {
       if (_formKey.currentState!.validate()) {
         _formKey.currentState!.save();
-        Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(
-            builder: (context) => const InterestsScreen(),
-          ),
-          (route) => false,
-        );
+        context.goNamed(InterestsScreen.routeName);
       }
     }
   }
