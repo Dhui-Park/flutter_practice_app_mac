@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/constants/gaps.dart';
 import 'package:flutter_practice/constants/sizes.dart';
+import 'package:flutter_practice/features/common/widgets/main_navigation/widgets/video_configuration/video_config.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:video_player/video_player.dart';
 import 'package:visibility_detector/visibility_detector.dart';
@@ -111,7 +112,6 @@ class _VideoPostState extends State<VideoPost>
 
   @override
   Widget build(BuildContext context) {
-    print(_animationController.value);
     return VisibilityDetector(
       key: Key("${widget.index}"),
       onVisibilityChanged: _onVisibilityChanged,
@@ -130,28 +130,42 @@ class _VideoPostState extends State<VideoPost>
             ),
           ),
           Positioned.fill(
-              child: IgnorePointer(
-            child: Center(
-              child: AnimatedBuilder(
-                animation: _animationController,
-                builder: (context, child) {
-                  return Transform.scale(
-                    scale: _animationController.value,
-                    child: child,
-                  );
-                },
-                child: AnimatedOpacity(
-                  opacity: _isPaused ? 1 : 0,
-                  duration: _animationDuration,
-                  child: const FaIcon(
-                    FontAwesomeIcons.play,
-                    color: Colors.white,
-                    size: Sizes.size80,
+            child: IgnorePointer(
+              child: Center(
+                child: AnimatedBuilder(
+                  animation: _animationController,
+                  builder: (context, child) {
+                    return Transform.scale(
+                      scale: _animationController.value,
+                      child: child,
+                    );
+                  },
+                  child: AnimatedOpacity(
+                    opacity: _isPaused ? 1 : 0,
+                    duration: _animationDuration,
+                    child: const FaIcon(
+                      FontAwesomeIcons.play,
+                      color: Colors.white,
+                      size: Sizes.size80,
+                    ),
                   ),
                 ),
               ),
             ),
-          )),
+          ),
+          Positioned(
+            left: 20,
+            top: 40,
+            child: IconButton(
+              icon: FaIcon(
+                VideoConfigData.of(context).autoMute
+                    ? FontAwesomeIcons.volumeOff
+                    : FontAwesomeIcons.volumeHigh,
+                color: Colors.white,
+              ),
+              onPressed: VideoConfigData.of(context).toggleMuted,
+            ),
+          ),
           Positioned(
             bottom: 20,
             left: 20,
