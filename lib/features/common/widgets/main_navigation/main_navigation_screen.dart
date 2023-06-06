@@ -8,7 +8,7 @@ import 'package:flutter_practice/features/users/user_profile_screen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../videos/video_timeline_screen.dart';
+import '../../../videos/views/video_timeline_screen.dart';
 import 'widgets/nav_tab.dart';
 
 class MainNavigationScreen extends StatefulWidget {

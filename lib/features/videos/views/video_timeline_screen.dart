@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_practice/features/videos/widgets/video_post.dart';
+
+import 'widgets/video_post.dart';
 
 class VideoTimelineScreen extends StatefulWidget {
   const VideoTimelineScreen({super.key});
