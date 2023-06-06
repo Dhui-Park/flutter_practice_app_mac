@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/features/common/widgets/main_navigation/widgets/video_configuration/video_config.dart';
+import 'package:provider/provider.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -27,16 +28,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
       body: ListView(
         children: [
-          ValueListenableBuilder(
-            valueListenable: videoConfig,
-            builder: (context, value, child) => SwitchListTile.adaptive(
-              value: value,
-              onChanged: (value) {
-                videoConfig.value = !videoConfig.value;
-              },
-              title: const Text('Auto Mute videos'),
-              subtitle: const Text("Videos will be muted by default."),
+          SwitchListTile.adaptive(
+            value: context.watch<VideoConfig>().isMuted,
+            onChanged: (value) => context.read<VideoConfig>().toggleIsMuted(),
+            title: const Text(
+              'Auto Mute',
             ),
+            subtitle: const Text('Videos muted by default.'),
           ),
           SwitchListTile.adaptive(
             value: _notifications,
