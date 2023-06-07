@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "873005738690",
+    "project_id": "sequence-mate",
+    "storage_bucket": "sequence-mate.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:873005738690:android:ded704eefba08d1c51295b",
+        "android_client_info": {
+          "package_name": "com.example.flutter_practice"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "873005738690-ogtnru73qctp4hice0us2ifustdk0dr4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFVSk9bBxNIbGrQQoczto7x78D00EsTIo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "873005738690-ogtnru73qctp4hice0us2ifustdk0dr4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "873005738690-8brm7da56ofn1gldecamumjtsk9e1cgn.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.dhui.flutterPractice"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
