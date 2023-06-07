@@ -33,6 +33,7 @@ class _VideoPostState extends State<VideoPost>
   late final AnimationController _animationController;
 
   bool _isPaused = false;
+  final bool _isMuted = false;
 
   void _onVideoChange() {
     if (_videoPlayerController.value.isInitialized) {
@@ -64,10 +65,6 @@ class _VideoPostState extends State<VideoPost>
       value: 1.5,
       duration: _animationDuration,
     );
-
-    context
-        .read<PlaybackConfigViewModel>()
-        .addListener(_onPlaybackConfigChanged);
   }
 
   @override
@@ -79,8 +76,7 @@ class _VideoPostState extends State<VideoPost>
 
   void _onPlaybackConfigChanged() {
     if (!mounted) return;
-    final muted = context.read<PlaybackConfigViewModel>().muted;
-    if (muted) {
+    if (false) {
       _videoPlayerController.setVolume(0);
     } else {
       _videoPlayerController.setVolume(1);
@@ -92,11 +88,9 @@ class _VideoPostState extends State<VideoPost>
     if (info.visibleFraction == 1 &&
         !_isPaused &&
         !_videoPlayerController.value.isPlaying) {
-      final autoplay = context.read<PlaybackConfigViewModel>().autoplay;
-      if (autoplay) {
+      if (false) {
         _videoPlayerController.play();
       }
-      _videoPlayerController.play();
     }
     if (_videoPlayerController.value.isPlaying && info.visibleFraction == 0) {
       _onTogglePause();
@@ -177,17 +171,13 @@ class _VideoPostState extends State<VideoPost>
             left: 20,
             top: 40,
             child: IconButton(
-              icon: FaIcon(
-                context.watch<PlaybackConfigViewModel>().muted
+              icon: const FaIcon(
+                false
                     ? FontAwesomeIcons.volumeOff
                     : FontAwesomeIcons.volumeHigh,
                 color: Colors.white,
               ),
-              onPressed: () {
-                context
-                    .read<PlaybackConfigViewModel>()
-                    .setMuted(!context.read()<PlaybackConfigViewModel>().muted);
-              },
+              onPressed: () {},
             ),
           ),
           Positioned(
@@ -206,7 +196,7 @@ class _VideoPostState extends State<VideoPost>
                 ),
                 Gaps.v10,
                 Text(
-                  "This is Karina.",
+                  "This is United.",
                   style: TextStyle(
                     fontSize: Sizes.size16,
                     color: Colors.white,

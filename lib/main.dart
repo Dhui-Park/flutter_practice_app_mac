@@ -2,23 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_practice/features/videos/repos/playback_config_repo.dart';
 import 'package:flutter_practice/features/videos/view_models/playback_config_vm.dart';
 import 'package:flutter_practice/router.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'constants/sizes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   final preferences = await SharedPreferences.getInstance();
-  final repository =
-      PlaybackConfigRepository(preferences); // initialize preferences
+  final repository = PlaybackConfigRepository(preferences);
 
   runApp(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (context) => PlaybackConfigViewModel(repository),
-        ),
+    ProviderScope(
+      overrides: [
+        playbackConfigProvider
+            .overrideWith(() => PlaybackConfigViewModel(repository))
       ],
       child: const FlutterPracticeApp(),
     ),
