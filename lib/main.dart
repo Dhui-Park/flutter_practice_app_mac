@@ -30,13 +30,13 @@ void main() async {
   );
 }
 
-class FlutterPracticeApp extends StatelessWidget {
+class FlutterPracticeApp extends ConsumerWidget {
   const FlutterPracticeApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp.router(
-      routerConfig: router,
+      routerConfig: ref.watch(routerProvider),
       debugShowCheckedModeBanner: false,
       title: 'Flutter Practice',
       theme: ThemeData(
