@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/features/authentication/repos/authentication_repo.dart';
 import 'package:flutter_practice/features/videos/view_models/playback_config_vm.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
@@ -90,7 +92,10 @@ class SettingsScreen extends ConsumerWidget {
                       child: const Text('No'),
                     ),
                     CupertinoDialogAction(
-                      onPressed: () => Navigator.of(context).pop(),
+                      onPressed: () {
+                        ref.read(authRepo).signOut();
+                        context.go("/");
+                      },
                       isDestructiveAction: true,
                       child: const Text('Yes'),
                     ),
