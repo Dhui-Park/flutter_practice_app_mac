@@ -2,18 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_practice/constants/gaps.dart';
 import 'package:flutter_practice/constants/sizes.dart';
 import 'package:flutter_practice/features/authentication/birthday_screen.dart';
+import 'package:flutter_practice/features/authentication/view_models/signup_view_model.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'widgets/form_button.dart';
 
-class PasswordScreen extends StatefulWidget {
+class PasswordScreen extends ConsumerStatefulWidget {
   const PasswordScreen({super.key});
 
   @override
-  State<PasswordScreen> createState() => _PasswordScreenState();
+  ConsumerState<PasswordScreen> createState() => _PasswordScreenState();
 }
 
-class _PasswordScreenState extends State<PasswordScreen> {
+class _PasswordScreenState extends ConsumerState<PasswordScreen> {
   final TextEditingController _passwordController = TextEditingController();
 
   String _password = "";
@@ -47,6 +49,11 @@ class _PasswordScreenState extends State<PasswordScreen> {
 
   void _onSubmit() {
     if (!_isPasswordValid()) return;
+    final state = ref.read(singUpForm.notifier).state;
+    ref.read(singUpForm.notifier).state = {
+      ...state,
+      "password": _password,
+    };
     Navigator.push(
       context,
       MaterialPageRoute(

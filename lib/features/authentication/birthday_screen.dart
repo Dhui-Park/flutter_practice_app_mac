@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_practice/constants/gaps.dart';
 import 'package:flutter_practice/constants/sizes.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_practice/features/authentication/view_models/signup_view_model.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../onboarding/interests_screen.dart';
 import 'widgets/form_button.dart';
 
-class BirthdayScreen extends StatefulWidget {
+class BirthdayScreen extends ConsumerStatefulWidget {
   const BirthdayScreen({super.key});
 
   @override
-  State<BirthdayScreen> createState() => _BirthdayScreenState();
+  ConsumerState<BirthdayScreen> createState() => _BirthdayScreenState();
 }
 
-class _BirthdayScreenState extends State<BirthdayScreen> {
+class _BirthdayScreenState extends ConsumerState<BirthdayScreen> {
   final TextEditingController _birthdayController = TextEditingController();
 
   DateTime initialDate = DateTime.now().add(const Duration(days: -4380));
@@ -32,7 +32,8 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
   }
 
   void _onNextTap() {
-    context.goNamed(InterestsScreen.routeName);
+    ref.read(signUpProvider.notifier).signUp();
+    // context.goNamed(InterestsScreen.routeName);
   }
 
   void _setTextFieldDate(DateTime date) {
@@ -95,8 +96,8 @@ class _BirthdayScreenState extends State<BirthdayScreen> {
             Gaps.v16,
             GestureDetector(
               onTap: _onNextTap,
-              child: const FormButton(
-                disabled: false,
+              child: FormButton(
+                disabled: ref.watch(signUpProvider).isLoading,
                 text: "Next",
               ),
             ),
