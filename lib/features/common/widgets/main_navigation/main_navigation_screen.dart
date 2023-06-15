@@ -4,7 +4,7 @@ import 'package:flutter_practice/constants/sizes.dart';
 import 'package:flutter_practice/features/discover/discover_screen.dart';
 import 'package:flutter_practice/features/inbox/inbox_screen.dart';
 import 'package:flutter_practice/features/common/widgets/main_navigation/widgets/post_video_button.dart';
-import 'package:flutter_practice/features/users/user_profile_screen.dart';
+import 'package:flutter_practice/features/users/views/user_profile_screen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 
