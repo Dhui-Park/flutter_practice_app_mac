@@ -22,3 +22,7 @@ class AvatarViewModel extends AsyncNotifier<void> {
     );
   }
 }
+
+final avatarProvider = AsyncNotifierProvider<AvatarViewModel, void>(
+  () => AvatarViewModel(),
+);
