@@ -36,7 +36,8 @@ class FlutterPracticeApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp.router(
-      routerConfig: ref.watch(routerProvider),
+      //routerConfig: ref.watch(routerProvider),
+      routerConfig: router,
       debugShowCheckedModeBanner: false,
       title: 'Flutter Practice',
       theme: ThemeData(
