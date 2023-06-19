@@ -7,9 +7,13 @@ import 'package:image_picker/image_picker.dart';
 
 class Avatar extends ConsumerWidget {
   final String name;
+  final bool hasAvatar;
+  final String uid;
 
   const Avatar({
     super.key,
+    required this.uid,
+    required this.hasAvatar,
     required this.name,
   });
 
@@ -43,7 +47,10 @@ class Avatar extends ConsumerWidget {
             )
           : CircleAvatar(
               radius: 50,
-              foregroundImage: const NetworkImage(""),
+              foregroundImage: hasAvatar
+                  ? NetworkImage(
+                      "https://firebasestorage.googleapis.com/v0/b/sequence-mate.appspot.com/o/avatars%2F$uid?alt=media")
+                  : null,
               child: Text(name),
             ),
     );

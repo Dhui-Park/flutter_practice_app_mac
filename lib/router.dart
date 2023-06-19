@@ -1,4 +1,4 @@
-/* import 'package:flutter_practice/features/authentication/login_screen.dart';
+import 'package:flutter_practice/features/authentication/login_screen.dart';
 import 'package:flutter_practice/features/authentication/repos/authentication_repo.dart';
 import 'package:flutter_practice/features/authentication/sign_up_screen.dart';
 import 'package:flutter_practice/features/common/widgets/main_navigation/main_navigation_screen.dart';
@@ -73,16 +73,3 @@ final routerProvider = Provider((ref) {
     ],
   );
 });
- */
-
-import 'package:flutter_practice/features/videos/views/video_recording_screen.dart';
-import 'package:go_router/go_router.dart';
-
-final router = GoRouter(
-  routes: [
-    GoRoute(
-      path: "/",
-      builder: (context, state) => const VideoRecordingScreen(),
-    ),
-  ],
-);

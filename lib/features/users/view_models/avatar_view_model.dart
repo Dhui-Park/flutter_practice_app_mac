@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter_practice/features/authentication/repos/authentication_repo.dart';
 import 'package:flutter_practice/features/users/repos/user_repository.dart';
+import 'package:flutter_practice/features/users/view_models/users_view_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class AvatarViewModel extends AsyncNotifier<void> {
@@ -18,7 +19,10 @@ class AvatarViewModel extends AsyncNotifier<void> {
     final fileName = ref.read(authRepo).user!.uid;
     _respository.uploadAvatar(file, fileName);
     state = await AsyncValue.guard(
-      () async => await _respository.uploadAvatar(file, fileName),
+      () async {
+        await _respository.uploadAvatar(file, fileName);
+        await ref.read(usersProvider.notifier).onAvatarUpload();
+      },
     );
   }
 }
